@@ -1,12 +1,12 @@
 
 const INPUT_MESSAGE = {
     PURCHASE: "구입금액을 입력해 주세요.\n",
-    WINNING_NUMBER: "당첨 번호를 입력해 주세요.\n",
+    WINNING_NUMBER: "\n당첨 번호를 입력해 주세요.\n",
     BONUS_NUMBER: "보너스 번호를 입력해 주세요.\n"
 }
 
 const OUTPUT_MESSAGE = {
-    PURCHASE_AMOUNT: "8개를 구매했습니다.\n",
+    PURCHASE_AMOUNT: "개를 구매했습니다.",
     RESULT_TITLE: "당첨 통계\n---",
     RESULT_RANK5: "3개 일치 (5,000원) - 개",
     RESULT_RANK4: "4개 일치 (50,000원) - 개",
