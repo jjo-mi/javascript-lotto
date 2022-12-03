@@ -4,15 +4,16 @@ const Lotto = require("./Lotto");
 
 
 class App {
-  // ticket;
 
   constructor() {
     this.ticket = 0;
     this.lottoArr = [];
+    this.winningArr = [];
   }
 
   play() {
     this.inputPurchaseAmount();
+    // this.inputWinning();
 
   }
 
@@ -24,6 +25,8 @@ class App {
       console.log(this.ticket);
       this.printPurchaseAmount();
       this.creatLottos();
+      this.inputWinning();
+
     });
   }
 
@@ -43,9 +46,36 @@ class App {
     }
   }
 
+  /** 3. 로또 구매량 출력 */
   printPurchaseAmount() {
     Console.print(this.ticket + OUTPUT_MESSAGE.PURCHASE_AMOUNT);
   }
+
+  /** 4. 당첨번호 입력창 구현 및 유효성검토 */
+  inputWinning() {
+    Console.readLine(INPUT_MESSAGE.WINNING_NUMBER, (input) => {
+      this.validateWinning();
+      this.winningArr =  input.split(',').map(Number);
+
+    });
+  }
+
+  /** 4-1. 당첨번호 유효성 검토(중복값, 6자리)  */
+  validateWinning(input) {
+    let winning = input.split(',').map(Number);
+    let x = new Set(this.winningArr);
+    if (winning .length !== 6 ||  winning.length !== x.size) {
+      throw new Error(ERROR_MESSAGE.WINNING_NUMBER);
+    }
+  }
+  // findNumber(el, num) {
+  //   if(el < num) {
+  //     return true;
+  //   }
+  // }
+
+  
+
 } 
 
 const app = new App();
