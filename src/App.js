@@ -9,6 +9,7 @@ class App {
     this.ticket = 0;
     this.lottoArr = [];
     this.winningArr = [];
+    this.bonusNumber = [];
   }
 
   play() {
@@ -54,8 +55,9 @@ class App {
   /** 4. 당첨번호 입력창 구현 및 유효성검토 */
   inputWinning() {
     Console.readLine(INPUT_MESSAGE.WINNING_NUMBER, (input) => {
-      this.validateWinning();
+      this.validateWinning(input);
       this.winningArr =  input.split(',').map(Number);
+      this.inputBonus();
 
     });
   }
@@ -63,8 +65,8 @@ class App {
   /** 4-1. 당첨번호 유효성 검토(중복값, 6자리)  */
   validateWinning(input) {
     let winning = input.split(',').map(Number);
-    let x = new Set(this.winningArr);
-    if (winning .length !== 6 ||  winning.length !== x.size) {
+    let x = new Set(winning);
+    if (winning.length !== 6 ||  winning.length !== x.size) {
       throw new Error(ERROR_MESSAGE.WINNING_NUMBER);
     }
   }
@@ -73,6 +75,21 @@ class App {
   //     return true;
   //   }
   // }
+
+  /** 5. 보너스 번호 입력 */
+  inputBonus() {
+    Console.readLine(INPUT_MESSAGE.BONUS_NUMBER, (input) => {
+      this.bonusNumber = input.split(',').map(Number);
+      this.validateBonus(input);
+    });
+  }
+
+  /** 5-1. 보너스 번호 유효성 검토 */
+  validateBonus() {
+    if (this.bonusNumber.length !== 1) {
+      throw new Error(ERROR_MESSAGE.BONUS_NUMBER);
+    }
+  }
 
   
 
