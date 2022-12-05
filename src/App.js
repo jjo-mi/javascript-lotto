@@ -1,6 +1,7 @@
 const { Console,Random } = require("@woowacourse/mission-utils");
 const { INPUT_MESSAGE, OUTPUT_MESSAGE, ERROR_MESSAGE } = require("./Constant");
 const Lotto = require("./Lotto");
+const result = require("./Result");
 
 
 class App {
@@ -14,8 +15,6 @@ class App {
 
   play() {
     this.inputPurchaseAmount();
-    // this.inputWinning();
-
   }
 
   /** 1. 로또 구입금액 받기 */
@@ -58,7 +57,6 @@ class App {
       this.validateWinning(input);
       this.winningArr =  input.split(',').map(Number);
       this.inputBonus();
-
     });
   }
 
@@ -81,6 +79,8 @@ class App {
     Console.readLine(INPUT_MESSAGE.BONUS_NUMBER, (input) => {
       this.bonusNumber = input.split(',').map(Number);
       this.validateBonus(input);
+      let compairResult = new result(this.lottoArr, this.winningArr, this.bonusNumber);
+
     });
   }
 

@@ -27,22 +27,6 @@ class Lotto {
   }
 
 
-  // /** 2. 로또 구매금액만큼 로또티켓 생성하기 */
-  // creatLotto(ticket) {
-  //   let totalLottos = [];
-  //   const numbers = Random.pickUniqueNumbersInRange(1, 45, 6);
-
-  //   for(let i = 0; i < ticket; i++) {
-  //     this.validate(numbers);
-  //     totalLottos.push(numbers);  
-  //   }
-  //   totalLottos.forEach(el => {
-  //     console.log(el)
-  //   });
-  //   return totalLottos;
-  // }
-
-
   // TODO: 추가 기능 구현
 }
 
