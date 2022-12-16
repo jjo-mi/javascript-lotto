@@ -4,6 +4,7 @@ const ValidationUtils = require("./ValidationUtils");
 const Lotto  = require("./Lotto");
 const { OUTPUT_MESSAGE } = require("./Constant");
 const Result = require("./Result");
+// const { money } = require("./InputView");
 
 
 
@@ -12,6 +13,7 @@ class App {
     this.lottoArr = [];
     this.winningArr = [];
     this.bonus = [];
+    this.money = 0;
 
   }
   play() {
@@ -22,6 +24,7 @@ class App {
   inputMoney() {
     InputView.money((money) => {
       ValidationUtils.validMoney(money);
+      this.money = money;
       let lottoPiece = money / 1000 
       Console.print(`\n` + lottoPiece + OUTPUT_MESSAGE.LOTTO_PIECE);
       this.creatLotto(lottoPiece);
@@ -61,7 +64,8 @@ class App {
       ValidationUtils.validBonus(this.bonus, this.winningArr);
       let result = new Result();
       result.compare(this.lottoArr, this.winningArr, this.bonus);
-      result.printResult();
+      result.calculate(this.money)
+      result.printResult(this.money);
     })
   }
 
