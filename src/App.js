@@ -34,12 +34,23 @@ class App {
       this.lottoArr.push(lotto);
     }
     this.printLottos();
+    this.inputWinning();
   }
 
   /** 3. 발행 로또 출력 */
   printLottos() {
     this.lottoArr.forEach(lotto => Console.print("[" + lotto.numbers.join(", ") + "]"));
   }
+
+  /** 4. 당첨번호 받기 */
+  inputWinning() {
+    InputView.winning((winning) => {
+      let winningArr = Array.from(winning.split(","),Number);
+      ValidationUtils.validwinning(winningArr);
+      console.log("###2", winningArr);
+    })
+  }
+
 
 
 

@@ -9,6 +9,18 @@ class ValidationUtils{
       throw new Error(ERROR_MESSAGE.INPUT_MONEY);
     }
   }
+
+  /** 4-2. 입력값 유효성 검토 */
+  static validwinning(winningArr) {    
+    let x = new Set(winningArr);
+    if(winningArr.length !== 6 || winningArr.length !== x.size) {
+      throw new Error(ERROR_MESSAGE.INPUT_WINNING);
+    }
+    if(winningArr.some(x => x > 45 || x < 1)) {
+      throw new Error(ERROR_MESSAGE.INPUT_WINNING);
+    }
+  }
+
 }
 
 module.exports = ValidationUtils;
