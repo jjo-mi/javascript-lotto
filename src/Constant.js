@@ -19,6 +19,7 @@ const ERROR_MESSAGE = {
     INPUT_MONEY: "[ERROR] 구매금액은 1,000원 단위로만 입력해야합니다.",
     INPUT_WINNING: "[ERROR] 당첨 번호는 1 ~ 45 사이의 숫자여야하며, 숫자마다 ','를 넣어 입력해주세요. ",
     INPUT_BONUS: "[ERROR] 보너스 번호는 1 ~ 45 사이 숫자로, 당첨번호와는 다른 숫자여야합니다.",
+    LOTTO: "[ERROR] 로또 번호는 6개여야 합니다."
 }
 
 module.exports = {INPUT_MESSAGE, OUTPUT_MESSAGE, ERROR_MESSAGE };
