@@ -21,4 +21,4 @@ const ERROR_MESSAGE = {
     INPUT_BONUS: "[ERROR] 보너스 번호는 1 ~ 45 사이 숫자로, 당첨번호와는 다른 숫자여야합니다.",
 }
 
-module.exports = {INPUT_MESSAGE, OUTPUT_MESSAGE};
+module.exports = {INPUT_MESSAGE, OUTPUT_MESSAGE, ERROR_MESSAGE };
