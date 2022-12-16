@@ -2,6 +2,7 @@ const { Console, Random } = require("@woowacourse/mission-utils");
 const InputView = require("./InputView");
 const ValidationUtils = require("./ValidationUtils");
 const Lotto  = require("./Lotto");
+const { OUTPUT_MESSAGE }  = require("./Constant");
 
 
 
@@ -20,7 +21,7 @@ class App {
     InputView.money((money) => {
       ValidationUtils.validMoney(money);
       this.lottoPiece = money / 1000 
-      console.log('###', this.lottoPiece);
+      Console.print(`\n` + this.lottoPiece + OUTPUT_MESSAGE.LOTTO_PIECE);
       this.creatLotto();
     })
   }
@@ -32,7 +33,14 @@ class App {
       let lotto = new Lotto(numbers);
       this.lottoArr.push(lotto);
     }
+    this.printLottos();
   }
+
+  /** 3. 발행 로또 출력 */
+  printLottos() {
+    this.lottoArr.forEach(lotto => Console.print("[" + lotto.numbers.join(", ") + "]"));
+  }
+
 
 
 }
