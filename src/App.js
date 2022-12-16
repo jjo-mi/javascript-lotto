@@ -2,7 +2,8 @@ const { Console, Random } = require("@woowacourse/mission-utils");
 const InputView = require("./InputView");
 const ValidationUtils = require("./ValidationUtils");
 const Lotto  = require("./Lotto");
-const { OUTPUT_MESSAGE }  = require("./Constant");
+const { OUTPUT_MESSAGE } = require("./Constant");
+const Result = require("./Result");
 
 
 
@@ -10,6 +11,7 @@ class App {
   constructor() {
     this.lottoArr = [];
     this.winningArr = [];
+    this.bonus = [];
 
   }
   play() {
@@ -52,16 +54,16 @@ class App {
     })
   }
 
-   /** 5. 보너스 번호 받기 */
-   inputBonus() {
+  /** 5. 보너스 번호 받기 */
+  inputBonus() {
     InputView.bonus((input) => {
-      let bonus = Number(input);
-      ValidationUtils.validBonus(bonus, this.winningArr);
+      this.bonus = Number(input);
+      ValidationUtils.validBonus(this.bonus, this.winningArr);
+      let result = new Result();
+      result.compare(this.lottoArr, this.winningArr, this.bonus);
+      result.printResult();
     })
   }
-
-
-
 
 }
 

@@ -21,7 +21,7 @@ class ValidationUtils{
     }
   }
 
-  /** 4-2. 입력값 유효성 검토 */
+  /** 5-2. 입력값 유효성 검토 */
   static validBonus(bonus, winningArr) {    
     if(bonus < 1 || bonus > 45 || winningArr.includes(bonus)) {
       throw new Error(ERROR_MESSAGE.INPUT_BONUS);
