@@ -8,8 +8,8 @@ const { OUTPUT_MESSAGE }  = require("./Constant");
 
 class App {
   constructor() {
-    this.lottoPiece = 0;
     this.lottoArr = [];
+    this.winningArr = [];
 
   }
   play() {
@@ -20,15 +20,15 @@ class App {
   inputMoney() {
     InputView.money((money) => {
       ValidationUtils.validMoney(money);
-      this.lottoPiece = money / 1000 
-      Console.print(`\n` + this.lottoPiece + OUTPUT_MESSAGE.LOTTO_PIECE);
-      this.creatLotto();
+      let lottoPiece = money / 1000 
+      Console.print(`\n` + lottoPiece + OUTPUT_MESSAGE.LOTTO_PIECE);
+      this.creatLotto(lottoPiece);
     })
   }
 
   /**2. 구입금액 만큼 로또 생성 */
-  creatLotto() {
-    for(let i = 0; i < this.lottoPiece; i++) {
+  creatLotto(lottoPiece) {
+    for(let i = 0; i < lottoPiece; i++) {
       let numbers = Random.pickUniqueNumbersInRange(1, 45, 6);
       let lotto = new Lotto(numbers);
       this.lottoArr.push(lotto);
@@ -42,12 +42,21 @@ class App {
     this.lottoArr.forEach(lotto => Console.print("[" + lotto.numbers.join(", ") + "]"));
   }
 
-  /** 4. 당첨번호 받기 */
+  /** 4. 당첨 번호 받기 */
   inputWinning() {
     InputView.winning((winning) => {
-      let winningArr = Array.from(winning.split(","),Number);
-      ValidationUtils.validwinning(winningArr);
-      console.log("###2", winningArr);
+      this.winningArr = Array.from(winning.split(","),Number);
+      ValidationUtils.validWinning(this.winningArr);
+      console.log("###2", this.winningArr);
+      this.inputBonus();
+    })
+  }
+
+   /** 5. 보너스 번호 받기 */
+   inputBonus() {
+    InputView.bonus((input) => {
+      let bonus = Number(input);
+      ValidationUtils.validBonus(bonus, this.winningArr);
     })
   }
 
