@@ -9,7 +9,8 @@ class Lotto {
   }
 
   validate(numbers) {
-    if (numbers.length !== 6) {
+    let x = new Set(numbers);
+    if (numbers.length !== 6 || numbers.length !== x.size) {
       throw new Error(ERROR_MESSAGE.LOTTO);
     }
   }
